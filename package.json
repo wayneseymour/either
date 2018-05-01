@@ -11,7 +11,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "jest",
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "slate": "rm -rf lib/*"
   },
   "repository": {
     "type": "git",
