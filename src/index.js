@@ -8,9 +8,9 @@ export const Right = x =>
 
 export const Left = x =>
 	({
-		chain: f => Left(x),
-		map: f => Left(x),
-		fold: (f, g) => f(x),
+		chain: f => Left(x), // eslint-disable-line no-unused-vars
+		map: f => Left(x), // eslint-disable-line no-unused-vars
+		fold: (f, g) => f(x), // eslint-disable-line no-unused-vars
 		inspect: () => `Left(${x})`
 	});
 
@@ -21,9 +21,8 @@ export const fromNullable = x =>
 
 export const tryCatch = f => {
 	try {
-		return Right(f())
+		return Right(f());
 	} catch (e) {
-		return Left(e)
+		return Left(e);
 	}
 };
-
