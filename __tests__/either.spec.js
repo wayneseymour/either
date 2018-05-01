@@ -1,4 +1,4 @@
-import {fromNullable, tryCatch} from '../lib';
+import {fromNullable, tryCatch} from '../src';
 
 describe(`either datatype functions`, () => {
 	describe(`'fromNullable'`, () => {
