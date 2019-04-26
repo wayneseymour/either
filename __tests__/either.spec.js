@@ -22,5 +22,6 @@ describe(`either datatype functions`, () => {
 });
 const pluck = x => obj => obj[x];
 const expectNull = x => expect(x).toEqual(null);
-const attempt = obj => fromNullable(obj)
-	.map(pluck('detail'));
+const attempt = obj =>
+	fromNullable(obj)
+		.map(pluck('detail'));
