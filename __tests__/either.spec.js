@@ -1,22 +1,26 @@
 import {fromNullable, tryCatch} from '../lib';
 
 describe(`either datatype functions`, () => {
-	describe(`'fromNullable'`, () => {
-		it(`should be a fn`, () => {
-			expect(typeof fromNullable).toBe('function');
-		});
-		it(`should drop processing if a false is calculated`, () => {
-			const obj = false;
-			fromNullable(obj)
-				.map(pluck('detail'))
-				.fold(x => expect(x).toEqual(null), x => console.log(`\n### x: \n\t${x}`));
-		});
+	it(`'fromNullable' should be a fn`, () => {
+		expect(typeof fromNullable).toBe('function');
 	});
-	describe(`'tryCatch'`, () => {
-		it(`should be a fn`, () => {
-			expect(typeof tryCatch).toBe('function');
+	it(`'tryCatch' should be a fn`, () => {
+		expect(typeof tryCatch).toBe('function');
+	});
+	describe(`'fromNullable`, () => {
+		it(`should continue processing if a truthy is calculated`, () => {
+			attempt({detail: 'x'})
+				.fold(() => {
+				}, x => expect(x).toEqual('x'));
+		});
+		it(`should drop processing if a falsey is calculated`, () => {
+			attempt(false)
+				.fold(expectNull, () => {
+				});
 		});
 	});
 });
 const pluck = x => obj => obj[x];
-
+const expectNull = x => expect(x).toEqual(null);
+const attempt = obj => fromNullable(obj)
+	.map(pluck('detail'));
