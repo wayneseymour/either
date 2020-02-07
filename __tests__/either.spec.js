@@ -1,11 +1,28 @@
-import {fromNullable, tryCatch} from '../lib';
+import {fromNullable, tryCatch} from '../src';
 
+const noop = () => {};
 describe(`either datatype functions`, () => {
 	it(`'fromNullable' should be a fn`, () => {
 		expect(typeof fromNullable).toBe('function');
 	});
 	it(`'tryCatch' should be a fn`, () => {
 		expect(typeof tryCatch).toBe('function');
+	});
+	describe('tryCatch', () => {
+		let sut;
+		beforeAll(() => {
+			sut = undefined;
+		});
+		it(`should return a 'Left' on error`, () => {
+			sut = tryCatch(() => {
+				throw new Error('blah');
+			});
+			expect(sut.inspect()).toBe('Left(Error: blah)');
+		});
+		it(`should return a 'Right' on successful execution`, () => {
+			sut = tryCatch(noop);
+			expect(sut.inspect()).toBe('Right(undefined)')
+		});
 	});
 	describe(`'fromNullable`, () => {
 		it(`should continue processing if a truthy is calculated`, () => {

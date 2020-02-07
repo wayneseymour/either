@@ -6,16 +6,37 @@ export const Right = x =>
 		inspect: () => `Right(${x})`
 	});
 
+Right.of = function of(x) {
+	return new Right(x);
+};
+
+export function right(x) {
+	return Right.of(x);
+}
+
 export const Left = x =>
 	({
-		chain: f => Left(x), // eslint-disable-line no-unused-vars
-		map: f => Left(x), // eslint-disable-line no-unused-vars
-		fold: (f, g) => f(x), // eslint-disable-line no-unused-vars
+		chain: f => Left(x),
+		map: f => Left(x),
+		fold: (f, g) => f(x),
 		inspect: () => `Left(${x})`
 	});
 
+Left.of = function of(x) {
+	return new Left(x);
+};
+
+export function left(x) {
+	return Left.of(x);
+}
+
 export const fromNullable = x =>
-	(x !== null && x !== undefined && x !== false)
+	(
+		x !== null &&
+		x !== undefined &&
+		x !== false &&
+		x !== 'undefined'
+	)
 		? Right(x)
 		: Left(null);
 
