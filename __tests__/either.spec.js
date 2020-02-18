@@ -1,12 +1,21 @@
-import {fromNullable, tryCatch} from '../src';
+import {fromNullable, tryCatch, left, right } from '../src';
 
 const noop = () => {};
+
 describe(`either datatype functions`, () => {
-	it(`'fromNullable' should be a fn`, () => {
-		expect(typeof fromNullable).toBe('function');
-	});
-	it(`'tryCatch' should be a fn`, () => {
-		expect(typeof tryCatch).toBe('function');
+	describe(`helpers`, () => {
+		it(`'fromNullable' should be a fn`, () => {
+			expect(typeof fromNullable).toBe('function');
+		});
+		it(`'tryCatch' should be a fn`, () => {
+			expect(typeof tryCatch).toBe('function');
+		});
+		it(`'left' should be a fn`, () => {
+			expect(typeof left).toBe('function');
+		});
+		it(`'right' should be a fn`, () => {
+			expect(typeof right).toBe('function');
+		});
 	});
 	describe('tryCatch', () => {
 		let sut;
