@@ -30,19 +30,15 @@ export function left(x) {
   return Left.of(x);
 }
 
-const isNothing = x => {
-  return (
+export const fromNullable = x =>
+  (
     x !== null &&
     x !== undefined &&
     x !== false &&
     x !== 'undefined'
   )
-}
-
-export const fromNullable = x =>
-  isNothing(x)
-    ? Left(null)
-    : Right(x);
+    ? Right(x)
+    : Left(null);
 
 export const tryCatch = f => {
   try {
@@ -51,3 +47,4 @@ export const tryCatch = f => {
     return Left(e);
   }
 };
+

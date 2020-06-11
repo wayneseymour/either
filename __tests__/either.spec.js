@@ -2,7 +2,7 @@ import {fromNullable, tryCatch, left, right } from '../src';
 
 const noop = () => {};
 
-describe(`either datatype functions`, () => {
+describe(`either algebraic datatype functions`, () => {
 	describe(`helpers`, () => {
 		it(`'fromNullable' should be a fn`, () => {
 			expect(typeof fromNullable).toBe('function');
