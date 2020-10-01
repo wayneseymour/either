@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals'
 import {fromNullable, tryCatch, left, right } from '../src';
 
 const noop = () => {};

@@ -5,7 +5,7 @@
   "main": "index.js",
   "devDependencies": {
     "@babel/preset-env": "^7.8.4",
-    "jest": "^25.1.0"
+    "jest": "^26.4.2"
   },
   "scripts": {
     "test": "jest"
@@ -14,7 +14,13 @@
     "type": "git",
     "url": "git+https://github.com/wayneseymour/either.git"
   },
-  "keywords": ["fp", "functional programming", "either", "either monad", "adt"],
+  "keywords": [
+    "fp",
+    "functional programming",
+    "either",
+    "either monad",
+    "adt"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
